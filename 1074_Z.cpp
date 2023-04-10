@@ -15,54 +15,50 @@
 #include <cmath>
 using namespace std;
 
-void makeVector(vector<vector<int> > &v, int n, int count);
+int visitCounter(int n, int row, int column, int count);
 
 int main()
 {
     ios :: sync_with_stdio(0);
     cin.tie(0);
-    int n, r, c;
-    vector<vector<int> > v;
+    int n, row, column;
 
-    cin >> n >> r >> c;
+    cin >> n >> row >> column;
 
-    // 2^1인 경우는 만들기
-    for (int i = 0; i < pow(2, n); i++) {
-        vector<int> v1;
-        v.push_back(v1);
-    }
-    v[0].push_back(0);
-    v[0].push_back(1);
-    v[1].push_back(0);
-    v[1].push_back(1);
-
-    makeVector(v, n, 0);
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            cout << v[i][j];
-        }
-    }
-
-    cout << v[r][c];
+    cout << visitCounter(n, row, column, 0) << endl;
 
     return 0;
 }
 
-void makeVector(vector<vector<int> > &v, int n, int count) {
-    if (n <= count) {
-        return;
-    }
+int visitCounter(int n, int row, int column, int count)
+{
+    int temp = 0, size = pow(2, n);
+    int right = 0, up = 0;
+    int block = pow(4, (n-1));
     
-    // 오, 아래, 위에 붙여넣기
-    for (int i = 0; i < 3; i++) {
-        int size = (count+1) * 2;
-        // 오른쪽 - 각 행 size 만큼 복붙
-        for (int j = 0; j < size; j++) {
-            for (int k = 0; k < size; k++) {
-                v[j].push_back(v[j][k] + pow(2, j+1));
-            }
-        } 
+    if (column >= size/2)  right = 1;   // r이 오른쪽인지
+    if (row >= size/2)  up = 1;          // c가 위인지
+
+    // count 값 구하기
+    if (right == 1)  temp++;
+    if (up == 1)  temp += 2;
+    if (size/2 > 1) {
+        count += block * temp;
     }
 
-    // makeVector(v, n, count++);
+    int result = count + temp;
+
+    // cout << "row: " << row << ", column: " << column << ", block: " << block << endl;
+    // cout << "size: " << size << ", right: " << right << ", up: " << up << endl;
+    // cout << "count: " << count << ", temp: " << temp << ", result: " << result << endl;
+
+    if (n <= 1) {
+        return result;
+    } else {
+        row = row - (size/2)*up;
+        column = column - (size/2)*right;
+        result = visitCounter(n-1, row, column, count);
+    }
+
+    return result;
 }

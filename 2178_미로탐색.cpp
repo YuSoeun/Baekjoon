@@ -22,15 +22,15 @@ int main()
     ios::sync_with_stdio(0);
     cin.tie(0);
 
-    int row, column;
+    int column, row;
     char temp;
     vector<vector<int> > maze;
 
-    cin >> column >> row;
-    for (int i = 0; i < column; i++) {
+    cin >> row >> column;
+    for (int i = 0; i < row; i++) {
         vector<int> v;
         maze.push_back(v);
-        for (int j = 0; j < row; j++) {
+        for (int j = 0; j < column; j++) {
             cin >> temp;
             if (temp == '0') {
                 maze[i].push_back(-1);
@@ -56,7 +56,7 @@ int main()
             nx = cur.first + dx[i];
             ny = cur.second + dy[i];
 
-            if (nx < 0 || nx >= row || ny < 0 || ny >= column)  continue;
+            if (nx < 0 || nx >= column || ny < 0 || ny >= row)  continue;
             if (maze[ny][nx] == -1 || maze[ny][nx] > 0)  continue;
 
             move.push(make_pair(nx, ny));
@@ -64,14 +64,14 @@ int main()
         }
     }
 
-    // for (int i = 0; i < column; i++) {
-    //     for (int j = 0; j < row; j++) {
+    // for (int i = 0; i < row; i++) {
+    //     for (int j = 0; j < column; j++) {
     //         cout << maze[i][j] << "   ";
     //     }
     //     cout << "\n";
     // }
 
-    cout << maze[column-1][row-1];
+    cout << maze[row-1][column-1];
 
     return 0;
 }
