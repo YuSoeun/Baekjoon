@@ -13,41 +13,51 @@
 출력
 한 줄에 배낭에 넣을 수 있는 물건들의 가치합의 최댓값을 출력한다.
 */
-
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 int main()
 {
     int n, weight, temp;
     vector<int> values, weights;
-    vector<<int>> benefit;
+    cin.tie(0); ios::sync_with_stdio(0);
 
+    values.push_back(temp);  weights.push_back(temp);
     cin >> n >> weight;
     for (int i = 0; i < n; i++) {
-        cin >> temp;
-        values.push_back(temp);
-        cin >> temp;
-        weights.push_back(temp);
+        cin >> temp;  weights.push_back(temp);
+        cin >> temp;  values.push_back(temp);
     }
 
-    fill(benefit.begin(), benefit.end())
-
-    int first, second;
-    benefit[0][0] = 0;
+    vector<vector<int> > benefit(n+1, vector<int>(weight+1, 0));
     for (int i = 0; i <= n; i++) {
         for (int j = 0; j <= weight; j++) {
-            if (i == 0 || j == 0)  benefit[i][j] = 0;
-
-            if (weights[j] > weight) {
-                benefit[i-1][j] = benefit[i-1][j];
-            } else {
-                first = benefit[i-1][j];
-                second = benefit[i-1][j-1] + values[i];
+            // cout << "i: " << i << ", j: " << j << "\n";
+            if (i == 0 || j == 0) {
+                benefit[i][j] = 0;
+                continue;
             }
+            
+            if (weights[i] > j) {
+                benefit[i][j] = benefit[i-1][j];
+            } else {
+                int first, second = 0;
+                first = benefit[i-1][j];
+                second = benefit[i-1][j - weights[i]] + values[i];
+
+                if (first > second)  benefit[i][j] = first;
+                else benefit[i][j] = second;
+                // cout << "first: " << first << ", second: " << second << "\n";
+            }
+            // cout << "benefit: " << benefit[i][j] << "\n";
+            // cout << "weights: " << weights[i] << ", values: " << values[i] << "\n";
+            // cout << "\n";
         }
     }
+
+    cout << benefit[n][weight] << "\n";
 
     return 0;
 }
