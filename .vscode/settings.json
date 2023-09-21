@@ -70,6 +70,7 @@
         "queue": "cpp",
         "stack": "cpp",
         "variant": "cpp",
-        "__memory": "cpp"
+        "__memory": "cpp",
+        "0000_양식": "cpp"
     }
 }
