@@ -34,7 +34,6 @@ int main(int argc, char** argv)
 {
 	int T, N, test_case;
 	int num;
-
 	// freopen("input.txt", "r", stdin);
 
 	cin >> T;
