@@ -14,19 +14,19 @@ int main()
         cout << a[i] << "\n";
     }
 
-    int i = 0, j = max_index;
+    int i = 0, j = 0;
     int count = 0;
-    while (j > i) {
+    while (j < max_index) {
         // TODO: 알고리즘 다시 생각
         int temp = a[j] - a[i];
-        // if (temp > n) {
-        //     i++;
-        // } else if (temp == n) {
-        //     count++;
-        //     j++;
-        // } else {
-        //     j--;
-        // }
+        if (temp == n) {
+            count++;
+            j++;
+        } else if (temp > n) {
+            j--;
+        } else {
+            i++
+        }
     }
 
     return 0;
