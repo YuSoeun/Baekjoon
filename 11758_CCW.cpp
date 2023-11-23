@@ -5,8 +5,9 @@ using namespace std;
 
 int main()
 {
-    vector <pair<double, double> > p;
-    double x, y;
+    vector <pair<int, int> > p;
+    int x, y;
+    double comp;
 
     for (int i = 0; i < 3; i++) {
         cin >> x >> y;
@@ -23,20 +24,19 @@ int main()
             result = -1;
         }
     } else if (p[0].X < p[1].X) {
-        y = (p[1].Y - p[0].Y) / (p[1].X - p[0].X) * (p[2].X - p[0].X) + p[0].Y;
-        if (y == p[2].Y) {
+        comp = (p[1].Y - p[0].Y) * (p[2].X - p[0].X) / (double)(p[1].X - p[0].X) + p[0].Y;
+        if (comp == p[2].Y) {
             result = 0;
-        } else if (y < p[2].Y) {
+        } else if (comp < p[2].Y) {
             result = 1;
         } else {
             result = -1;
         }
     } else {
-        y = (p[1].Y - p[0].Y) * (p[2].X - p[0].X) / (p[1].X - p[0].X) + p[0].Y;
-
-        if (y == p[2].Y) {
+        comp = (p[1].Y - p[0].Y) * (p[2].X - p[0].X) / (double)(p[1].X - p[0].X) + p[0].Y;
+        if (comp == p[2].Y) {
             result = 0;
-        } else if (y > p[2].Y) {
+        } else if (comp > p[2].Y) {
             result = 1;
         } else {
             result = -1;
