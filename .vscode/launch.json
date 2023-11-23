@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/doplinblue/데스크탑/한동대/Baekjoon",
-      "program": "/Users/doplinblue/데스크탑/한동대/Baekjoon/build/Debug/outDebug"
+      "cwd": "/Users/doplinblue/데스크탑/한동대/Baekjoon",
+      "program": "/Users/doplinblue/데스크탑/한동대/Baekjoon/build/Debug/outDebug"
     }
   ]
 }
