@@ -141,6 +141,7 @@
     "variant": "cpp",
     "algorithm": "cpp",
     "functional": "cpp",
-    "2166_다각형의면적": "cpp"
+    "2166_다각형의면적": "cpp",
+    "bit": "cpp"
   }
 }
