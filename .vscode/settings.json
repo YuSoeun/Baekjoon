@@ -139,6 +139,8 @@
     "unordered_map": "cpp",
     "unordered_set": "cpp",
     "variant": "cpp",
-    "algorithm": "cpp"
+    "algorithm": "cpp",
+    "functional": "cpp",
+    "2166_다각형의면적": "cpp"
   }
 }
