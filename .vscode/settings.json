@@ -142,6 +142,9 @@
     "algorithm": "cpp",
     "functional": "cpp",
     "2166_다각형의면적": "cpp",
-    "bit": "cpp"
+    "bit": "cpp",
+    "filesystem": "cpp",
+    "__memory": "cpp",
+    "iterator": "cpp"
   }
 }
