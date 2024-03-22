@@ -98,7 +98,7 @@ int main()
             // cout << "전체순회" << endl;
             // for (auto it = rel.begin(); it != rel.end(); it++)
             // {
-            //     // cout <<"["<< it->first <<","<< it->second <<"]"<< endl;
+            //     cout <<"["<< it->first <<","<< it->second <<"]"<< endl;
             // }
 
             int result = *max_element(cnt.begin(), cnt.end());
