@@ -1,0 +1,7 @@
+3
+4
+ABAA
+4
+BBBA
+5
+ABABA
