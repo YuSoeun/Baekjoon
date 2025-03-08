@@ -1,9 +1,9 @@
 #include <iostream>
-#include <set>
+#include <unordered_set>
 using namespace std;
 
 int N, M;
-set<string> sets;
+unordered_set<string> sets;
 string input;
 
 int main() {
@@ -23,6 +23,5 @@ int main() {
         }
     }
     cout << cnt << "\n";
-    
     return 0;
 }
