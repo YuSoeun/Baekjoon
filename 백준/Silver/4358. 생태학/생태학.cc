@@ -11,16 +11,13 @@ int main() {
     
     int cnt = 0;
     while (getline(cin, input)) {
-        if (m.find(input) == m.end()) {
-            m[input] = 1;
-        } else {
-            m[input]++;
-        }
+        m[input]++;
         cnt++;
     }
 
     cout << fixed;
     cout.precision(4);
+    
     for (auto e : m) {
         cout << e.first << " " << (double)e.second/cnt*100 << "\n";
     }
