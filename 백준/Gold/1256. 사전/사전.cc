@@ -37,15 +37,12 @@ int main()
     cin.tie(0); ios::sync_with_stdio(0);
     cin >> N >> M >> K;
 
-    fill(&combi[0][0], &combi[0][0] + SIZE * SIZE, 0);
-    for (int i = 0; i < SIZE; i++) {
-        combi[i][0] = combi[i][i] = 1;
-    }
+    fill(&combi[0][0], &combi[0][0] + SIZE * SIZE, 1);
     for (int i = 1; i < SIZE; i++) {
         for (int j = 1; j < i; j++) {
             combi[i][j] = combi[i-1][j-1] + combi[i-1][j];
             if (combi[i][j] > 1000000000) {
-                combi[i][j] = 1000000001; // Prevent overflow
+                combi[i][j] = 1000000001; // prevent overflow
             }
         }
     }
