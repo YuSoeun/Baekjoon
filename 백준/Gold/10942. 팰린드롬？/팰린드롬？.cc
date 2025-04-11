@@ -26,7 +26,6 @@ void checkPalindrome()
         for (int end = start; end <= N; end++) {
             temp = isPalindrome(start, end);
             dp[start][end] = temp;
-            // cout << "s: " << start << ", end: " << end << " - " << m[s] << "\n";
         }
     }
 }
