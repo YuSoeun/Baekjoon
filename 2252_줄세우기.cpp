@@ -49,18 +49,12 @@ int main()
         indegrees[b]++;
     }
 
-    // for (int i : indegrees) {
-    //     cout << i << " ";
-    // }
-    // cout << "------ indegrees ------" << endl;
-
     queue<int> result = topoloSort(matrix, indegrees);
 
     while (result.size() > 0) {
         cout << result.front() << " ";
         result.pop();
     }
-    // cout << "------ result ------" << endl;
 
     return 0;
 }
