@@ -21,16 +21,14 @@ int main()
                 A[i][j] = B[i][j];
             } else if (j < Y) {
                 A[i][j] = B[i][j];
+            }  else {
+                // A[i][j] = B[i][j] - B[i+X][j+Y];
+                A[i][j] = B[i][j] - A[i-X][j-Y];
             }
-            // else if (i < X && j < Y) {
-            //     A[i][j] = B[i][j] - B[i+X][j+Y];
-            // }
             cout << A[i][j] << " ";
         }
         cout << "\n";
     }
-
-
 
     return 0;
 }

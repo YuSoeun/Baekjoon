@@ -4,7 +4,7 @@ using namespace std;
 int main()
 {
     int N, temp, result = 0;
-    vector<int> A, B;
+    vector<int> A;
     vector<int> matrix;
 
     cin >> N;
@@ -15,7 +15,6 @@ int main()
         matrix.push_back(0);
     }
 
-    // 정렬된 것이랑 비교
     int count, min = 0;
     for (int i = N-1; i >= 0; i--) {
         int max_cnt = 0;

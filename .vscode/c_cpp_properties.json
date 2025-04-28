@@ -3,8 +3,12 @@
         {
             "name": "macos-clang-arm64",
             "includePath": [
+<<<<<<< HEAD
+                "${workspaceFolder}/**"
+=======
                 "${workspaceFolder}/**",
                 "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1"
+>>>>>>> 6b93e7bfa64a81eae2ad73dbceea473f6d18a5bd
             ],
             "compilerPath": "/usr/bin/clang",
             "cStandard": "${default}",

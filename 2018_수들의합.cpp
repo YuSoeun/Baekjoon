@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+using namespace std;
 
 int main()
 {
@@ -23,9 +24,9 @@ int main()
             count++;
             j++;
         } else if (temp > n) {
-            j--;
+            j--;
         } else {
-            i++
+            i++;
         }
     }
 
