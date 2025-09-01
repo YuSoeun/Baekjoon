@@ -1,53 +1,42 @@
-import java.util.*;
 import java.io.*;
+import java.util.*;
 
 class Main {
-    static int          N, K;
-    static Queue<Point> q;
-    static boolean[]    visited;
-    
-    static class Point {
-        int distance;
-        int index;
-        
-        Point(int distance, int index) {
-            this.distance = distance;
-            this.index = index;
-        }
-    }
+    static final int MAX = 100_000;
 
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
-        N = Integer.parseInt(st.nextToken());
-        K = Integer.parseInt(st.nextToken());
+        int N = Integer.parseInt(st.nextToken());
+        int K = Integer.parseInt(st.nextToken());
 
-        q = new LinkedList<Point>();
-        visited = new boolean[100001];
-        
-        Point p = new Point(0, N);
-        q.offer(p);
-        visited[N] = true;
+        // 조기 종료: 뒤로만 걸어가는 경우가 최적
+        if (N >= K) {
+            System.out.println(N - K);
+            return;
+        }
+
+        int[] dist = new int[MAX + 1];
+        Arrays.fill(dist, -1);
+
+        ArrayDeque<Integer> q = new ArrayDeque<>();
+        dist[N] = 0;
+        q.offer(N);
+
         while (!q.isEmpty()) {
-            Point cur = q.poll();
-            if (cur.index == K) {
-                System.out.println(cur.distance);
+            int cur = q.poll();
+            if (cur == K) {
+                System.out.println(dist[cur]);
                 return;
             }
-            
-            if (1 + cur.index <= 100000 && !visited[cur.index+1]) {
-                visited[cur.index+1] = true;
-                q.offer(new Point(cur.distance+1, cur.index+1));
-            }
-            
-            if (-1 + cur.index >= 0 && !visited[cur.index-1]) {
-                visited[cur.index-1] = true;
-                q.offer(new Point(cur.distance+1, cur.index-1));
-            }
-            
-            if (2 * cur.index <= 100000 && !visited[cur.index*2]) {
-                visited[cur.index*2] = true;
-                q.offer(new Point(cur.distance+1, cur.index*2));
+
+            // 세 가지 이동
+            int[] nexts = { cur - 1, cur + 1, cur * 2 };
+            for (int nx : nexts) {
+                if (0 <= nx && nx <= MAX && dist[nx] == -1) {
+                    dist[nx] = dist[cur] + 1;
+                    q.offer(nx);
+                }
             }
         }
     }
