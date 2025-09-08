@@ -2,6 +2,13 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "java",
+      "name": "Main_1697_숨바꼭질",
+      "request": "launch",
+      "mainClass": "Main_1697_숨바꼭질",
+      "projectName": "Baekjoon_7b8a4bf5"
+    },
+    {
       "name": "C/C++ Runner: Debug Session",
       "type": "lldb",
       "request": "launch",
