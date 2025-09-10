@@ -2,6 +2,27 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "java",
+      "name": "Main_16987_계란으로계란치기",
+      "request": "launch",
+      "mainClass": "Main_16987_계란으로계란치기",
+      "projectName": "Baekjoon_29d9d8cf"
+    },
+    {
+      "type": "java",
+      "name": "Main_19940_피자오븐",
+      "request": "launch",
+      "mainClass": "Main_19940_피자오븐",
+      "projectName": "Baekjoon_29d9d8cf"
+    },
+    {
+      "type": "java",
+      "name": "Main_2473_세용액",
+      "request": "launch",
+      "mainClass": "Main_2473_세용액",
+      "projectName": "Baekjoon_29d9d8cf"
+    },
+    {
       "name": "C/C++ Runner: Debug Session",
       "type": "lldb",
       "request": "launch",
