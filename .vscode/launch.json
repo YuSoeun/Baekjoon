@@ -3,6 +3,7 @@
   "configurations": [
     {
       "type": "java",
+<<<<<<< HEAD
       "name": "Main_16987_계란으로계란치기",
       "request": "launch",
       "mainClass": "Main_16987_계란으로계란치기",
@@ -21,6 +22,12 @@
       "request": "launch",
       "mainClass": "Main_2473_세용액",
       "projectName": "Baekjoon_29d9d8cf"
+=======
+      "name": "Main_1697_숨바꼭질",
+      "request": "launch",
+      "mainClass": "Main_1697_숨바꼭질",
+      "projectName": "Baekjoon_7b8a4bf5"
+>>>>>>> ef8bce20c20d1cddd346e5e844eb4af1285b13b6
     },
     {
       "name": "C/C++ Runner: Debug Session",
