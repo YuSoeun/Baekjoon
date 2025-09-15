@@ -1,6 +1,8 @@
 import java.util.*;
 import java.io.*;
 
+// 1h 40m: List, Class, Array 미숙, 자식이 3개 이상일 수 있음
+
 public class Main_1967_diameterOfTree {
     static int N;
     static int result;
@@ -21,7 +23,6 @@ public class Main_1967_diameterOfTree {
         int first = 0, second = 0;
 
         for (Node node : tree[from]) {
-            // System.out.println(from + " -> " + node.to + ": " + node.cost);
             child = node.cost + traverse(node.to);
 
             if (child > first) {
@@ -33,7 +34,6 @@ public class Main_1967_diameterOfTree {
         }
 
         result = Math.max(first + second, result);
-        // System.out.println("maxChild: " + maxChild + " / " + result);
         return Math.max(first, second);
     }
 
