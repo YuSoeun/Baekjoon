@@ -3,6 +3,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Main",
+      "request": "launch",
+      "mainClass": "Main",
+      "projectName": "Baekjoon_7b8a4bf5"
+    },
+    {
+      "type": "java",
+      "name": "Main_N과M_1",
+      "request": "launch",
+      "mainClass": "Main_N과M_1",
+      "projectName": "Baekjoon_7b8a4bf5"
+    },
+    {
+      "type": "java",
       "name": "Main_1697_숨바꼭질",
       "request": "launch",
       "mainClass": "Main_1697_숨바꼭질",
