@@ -1,28 +1,37 @@
-import java.lang.*;
 import java.io.*;
+import java.util.*;
 
 public class Main_1629_multifly {
-    static Long A, B, C;
-    static Long twoPower[];
+    static long A, B, C;
+    static List<Long> twoPower;
 
     public static void main(String args[]) throws Exception {
-        Bufferedreader br = new BufferedReader(new inputStreamReader(System.in));
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
+        twoPower = new ArrayList<>();
 
-        A = Integer.parseInt(st.nextToken());
-        B = Integer.parseInt(st.nextToken());
-        C = Integer.parseInt(st.nextToken());
+        A = Long.parseLong(st.nextToken());
+        B = Long.parseLong(st.nextToken());
+        C = Long.parseLong(st.nextToken());
 
-        int x = 1;  // A to the Power of (2 to the Power of x)
+        int x = 1;          // A to the Power of (2 to the Power of x)
+        long pow = 2;       // 2 to the Power of x
         
         // set twoPower
-        twopower[0] = A % C;
-        while (x <= B) {
-            twoPower[x] = twoPower[x-1] * twoPower[x-1] % C;
+        twoPower.add(A % C);
+        while (pow <= B) {
+            twoPower.add((twoPower.get(x-1) * twoPower.get(x-1)) % C);
+            pow *= 2;
             x++;
         }
 
-        int result = 0;
-        while (1)
+        long result = 1;
+        for (int i = 0; i < twoPower.size(); i++) {
+            if ((B & 1) == 1) {
+                result = (result * twoPower.get(i)) % C;
+            }
+            B >>= 1;
+        }
+        System.out.println(result);
     }
 }
