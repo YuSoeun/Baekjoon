@@ -2,6 +2,38 @@
 
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/340199?language=java) 
 
+## insight
+```
+int temp = maxBill;
+maxBill = Math.max(maxBill, minBill);
+minBill = Math.min(temp, minBill);
+```
+처럼 최대값이 줄어들면 최소값도 수정해야한다.
+
+## 코드
+```
+class Solution {
+    public int solution(int[] wallet, int[] bill) {
+        int answer = 0;
+        int minBill = Math.min(bill[0], bill[1]);;
+        int maxBill = Math.max(bill[0], bill[1]);;
+        int minWallet = Math.min(wallet[0], wallet[1]);
+        int maxWallet = Math.max(wallet[0], wallet[1]);
+        
+        while (minBill > minWallet || maxBill > maxWallet) {
+            maxBill /= 2;
+            answer++;
+            
+            int temp = maxBill;
+            maxBill = Math.max(maxBill, minBill);
+            minBill = Math.min(temp, minBill);
+        }
+        
+        return answer;
+    }
+}
+```
+
 ### 성능 요약
 
 메모리: 78.7 MB, 시간: 0.06 ms
