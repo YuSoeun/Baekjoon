@@ -15,9 +15,7 @@ class Solution {
                } else {
                    emptyCnt = 0;
                }
-               // System.out.print(matrix[i][j]);
            }
-           // System.out.println();
         }
         
         // 가능한 매트의 최대 길이 계산
@@ -49,7 +47,6 @@ class Solution {
                }
            }
         }
-       // System.out.println("maxMat: " + maxMat);
         
         // 가능한 매트 중 조건에 맞는 값 answer로
         for (int mat : mats) {
