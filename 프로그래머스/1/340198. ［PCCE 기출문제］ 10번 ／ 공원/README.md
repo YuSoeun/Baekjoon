@@ -2,6 +2,13 @@
 
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/340198) 
 
+## insight
+예외 케이스가 없는 상황에서는 코드의 오류를 의심하기
+```java
+prev = Math.min(prev, matrix[index][j] + rowCnt);
+-> prev = Math.min(prev, matrix[index][j]);
+```
+
 ### 성능 요약
 
 메모리: 94.7 MB, 시간: 2.00 ms
