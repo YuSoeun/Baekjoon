@@ -2,6 +2,10 @@
 
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/1829) 
 
+## 리뷰
+소요시간: 20분  
+레벨 2 나쁘지 않다.
+
 ### 성능 요약
 
 메모리: 94.9 MB, 시간: 13.84 ms
