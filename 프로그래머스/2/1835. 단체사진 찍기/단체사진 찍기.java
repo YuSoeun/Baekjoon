@@ -5,7 +5,7 @@ import java.awt.Point;
 class Solution {
     int N;                  // 조건 수, 최대 100개
     int M = 8;              // 프렌즈 명수
-    String[] conditions;   // [알파벳][알파벳][비교문자] 숫자
+    String[] conditions;    // [알파벳][알파벳][비교문자] 숫자
     int answer = 0;
     
     public int solution(int n, String[] data) {
@@ -44,21 +44,18 @@ class Solution {
     }
     
     public boolean isValid() {
-        // System.out.println(combination);
         // 알파벳 2개 사이에 조건을 저장
         for (String s : conditions) {
             char x      = s.charAt(0);
             char y      = s.charAt(2);
             char comp   = s.charAt(3);
             int num     = s.charAt(4) - '0'+1;
-            // System.out.println(x + " " + y + " " + comp + " " + num);
             
             int xIndex = 0, yIndex = 0;
             for (int i = 0; i < M; i++) {
                 if (combination[i] == x) xIndex = i;
                 if (combination[i] == y) yIndex = i;
             }
-            // System.out.println(xIndex + " " + yIndex);
             
             if (comp == '=') {
                 if (Math.abs(xIndex-yIndex) != num)  return false;
