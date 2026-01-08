@@ -2,6 +2,10 @@
 
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/12933?language=java) 
 
+## 리뷰
+20분 소요  
+dfs같은 문제만 풀다가 정작 String이나 ArrayList 다루는 함수는 손에 익지 않았다는 것을 깨달았다.  
+
 ### 성능 요약
 
 메모리: 86.7 MB, 시간: 2.35 ms
