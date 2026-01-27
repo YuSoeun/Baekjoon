@@ -2,6 +2,10 @@
 
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/1844?language=java) 
 
+## 리뷰
+19분 소요
+이미 input 값이 함수의 파라미터로 들어와있는 경우에는 bfs같은 함수를 하나 더 만들지 않고, solution 함수 내에서 코드를 작성하는 것도 좋아보임.
+
 ### 성능 요약
 
 메모리: 54.9 MB, 시간: 10.17 ms
