@@ -29,15 +29,12 @@ public class Main {
             st = new StringTokenizer(br.readLine());
             A = Integer.parseInt(st.nextToken());
             B = Integer.parseInt(st.nextToken());
-            if (B < A) {
-                int temp = A;
-                A = B;
-                B = temp;
-            }
 
             union(A, B);
-            if (size[find(A)] > 0) {
-                size[find(A)]--;
+
+            int root = find(A);
+            if (size[root] > 0) {
+                size[root]--;
                 sb.append("LADICA").append("\n");
             } else {
                 sb.append("SMECE").append("\n");
@@ -52,7 +49,7 @@ public class Main {
         int pb = find(b);
 
         if (pa != pb) {
-            p[pb] = p[pa];
+            p[pb] = pa;
             size[pa] += size[pb];
         }
     }
