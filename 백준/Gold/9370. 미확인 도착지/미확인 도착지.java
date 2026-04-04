@@ -11,21 +11,20 @@ public class Main {
     static int S; // 시작 점
     static int G, H; // 필수로 건너는 곳
 
-    static int destT[];
-    static ArrayList<Map<Integer, Integer>> edges;
-    static int distance2S[];
-    static int distance2G[];
-    static int distance2H[];
+    static int candidates[];
+    static List<Node>[] graph;
+    static int distS[];
+    static int distH[];
+    static int distG[];
     public static void main(String args[]) throws Exception {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader  br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
-        StringBuilder sb = new StringBuilder();
+        StringBuilder   sb = new StringBuilder();
 
         int TC = Integer.parseInt(st.nextToken());
 
         for (int tc = 0; tc < TC; tc++) {
             st = new StringTokenizer(br.readLine());
-
             N = Integer.parseInt(st.nextToken());
             M = Integer.parseInt(st.nextToken());
             T = Integer.parseInt(st.nextToken());
@@ -35,47 +34,35 @@ public class Main {
             G = Integer.parseInt(st.nextToken());
             H = Integer.parseInt(st.nextToken());
 
-            edges = new ArrayList<>();
-            for (int i = 0; i < N+1; i++) {
-                edges.add(new HashMap<>());
-            }
+            graph = new ArrayList[N+1];
+            for (int i = 0; i < N+1; i++)  graph[i] = new ArrayList<>();
 
             for (int i = 0; i < M; i++) {
                 st = new StringTokenizer(br.readLine());
                 int a = Integer.parseInt(st.nextToken());
                 int b = Integer.parseInt(st.nextToken());
                 int d = Integer.parseInt(st.nextToken());
-                edges.get(a).put(b, d);
-                edges.get(b).put(a, d);
+                graph[a].add(new Node(b, d));
+                graph[b].add(new Node(a, d));
             }
         
-            destT = new int[T];
+            candidates = new int[T];
             for (int i = 0; i < T; i++) {
                 st = new StringTokenizer(br.readLine());
-                destT[i] = Integer.parseInt(st.nextToken());
+                candidates[i] = Integer.parseInt(st.nextToken());
             }
 
             // 3번 dijkstra
-            distance2S = new int[N+1];
-            distance2H = new int[N+1];
-            distance2G = new int[N+1];
-            dijkstra(distance2S, S);
-            dijkstra(distance2H, H);
-            dijkstra(distance2G, G);
+            distS = dijkstra(S);
+            distG = dijkstra(H);
+            distH = dijkstra(G);
 
-            ArrayList<Integer> result = new ArrayList<>();
-            for (int e : destT) {
-                int comp = Integer.MAX_VALUE;
+            List<Integer> result = new ArrayList<>();
+            for (int dest : candidates) {
+                long comp1 = (long) distS[H] + distG[G] + distH[dest];
+                long comp2 = (long) distS[G] + distH[H] + distG[dest];
                 
-                if (distance2S[H] < Integer.MAX_VALUE && distance2G[e] < Integer.MAX_VALUE) {
-                    comp = distance2S[H] + distance2H[G] + distance2G[e];
-                }
-
-                if (distance2S[G] < Integer.MAX_VALUE && distance2H[e] < Integer.MAX_VALUE) {
-                    comp = Math.min(comp, distance2S[G] + distance2G[H] + distance2H[e]);
-                }
-                
-                if (distance2S[e] == comp && comp != Integer.MAX_VALUE) result.add(e);
+                if (distS[dest] == Math.min(comp1, comp2)) result.add(dest);
             }
 
             Collections.sort(result);
@@ -86,20 +73,40 @@ public class Main {
         System.out.print(sb);
     }
     
-    static void dijkstra(int[] fee, int start) {
-        Queue<Integer> q = new ArrayDeque<>();
-        Arrays.fill(fee, Integer.MAX_VALUE);
-        q.offer(start);
-        fee[start] = 0;
+    static int[] dijkstra(int start) {
+        int[] dist = new int[N + 1];
+        Arrays.fill(dist, Integer.MAX_VALUE);
+        dist[start] = 0;
 
-        while (!q.isEmpty()) {
-            int cur = q.poll();
-            for (Map.Entry<Integer, Integer> e : edges.get(cur).entrySet()) {
-                if (fee[e.getKey()] > e.getValue() + fee[cur]) {
-                    q.offer(e.getKey());
-                    fee[e.getKey()] = e.getValue() + fee[cur];
+        PriorityQueue<Node> pq = new PriorityQueue<>();
+        pq.offer(new Node(start, 0));
+
+        while (!pq.isEmpty()) {
+            Node cur = pq.poll();
+
+            if (cur.cost > dist[cur.to])  continue;
+
+            for (Node nxt : graph[cur.to]) {
+                if (dist[cur.to] + nxt.cost < dist[nxt.to]) {
+                    dist[nxt.to] = dist[cur.to] + nxt.cost;
+                    pq.offer(new Node(nxt.to, dist[nxt.to]));
                 }
             }
+        }
+        return dist;
+    }
+
+    static class Node implements Comparable<Node> {
+        int to, cost;
+
+        Node(int to, int cost) {
+            this.to = to;
+            this.cost = cost;
+        }
+
+        @Override
+        public int compareTo(Node o) {
+            return Integer.compare(this.cost, o.cost);
         }
     }
 }
